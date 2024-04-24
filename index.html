@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun</title>
+<meta charset="UTF-8">
+<title>fun</title>
+<style>
+
+    #loader {
+        border: 16px solid #f3f3f3; 
+        border-top: 16px solid #3498db; 
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    #continueButton, #myAudio {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
 </head>
 <body>
-    <audio autoplay>
-        <source src="imagine.mp3" type="audio/mpeg">
+<div id="loader"></div> 
+<button id="continueButton" onclick="playAudio()">Нажмите чтобы продолжить</button> 
+<audio id="myAudio" controls>
+    <source src="imagine.mp3" type="audio/mpeg">
+</audio>
 
-    </audio>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.getElementById('loader').style.display = 'none'; 
+        document.getElementById('continueButton').style.display = 'block';
+    }, 2000); 
+});
+
+function playAudio() {
+    const audio = document.getElementById('myAudio');
+    audio.volume = 1.0; 
+    audio.play();
+    document.getElementById('continueButton').style.display = 'none';
+}
+</script>
 </body>
 </html>
