@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>fun</title>
 <style>
 
@@ -23,6 +24,8 @@
         100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
+    
+
     #continueButton, #myAudio {
         display: none;
         position: absolute;
@@ -30,6 +33,16 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+
+    @media (max-width: 767px) {
+        #continueButton {
+            font-size: 27px;
+            width: 250px;
+        }
+    }
+
+
+       
 </style>
 </head>
 <body>
@@ -40,12 +53,14 @@
 </audio>
 
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
         document.getElementById('loader').style.display = 'none'; 
         document.getElementById('continueButton').style.display = 'block';
     }, 2000); 
 });
+
 
 function playAudio() {
     const audio = document.getElementById('myAudio');
